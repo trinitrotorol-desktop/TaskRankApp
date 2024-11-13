@@ -105,22 +105,22 @@
         <p th:text="${error}"></p>
       </div>
 
-      <form action="/login" method="post">
+      <form action="/authenticate" method="post">
         <div class="form-group">
-          <label for="mailaddress">メールアドレス</label>
-          <input type="text" id="mailaddress" name="mailaddress" required />
+          <label for="MailAddress">メールアドレス</label>
+          <input type="text" id="MailAddress" name="MailAddress" required />
         </div>
 
         <div class="form-group">
-          <label for="password">パスワード</label>
-          <input type="password" id="password" name="password" required />
+          <label for="Password">パスワード</label>
+          <input type="password" id="Password" name="Password" required />
         </div>
 
         <button type="submit">ログイン</button>
       </form>
 
       <p>
-        アカウントをお持ちでない場合は、<a href="/register">新規登録</a
+        アカウントをお持ちでない場合は、<a href="/signup">新規登録</a
         >してください。
       </p>
     </div>
