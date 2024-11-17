@@ -1,10 +1,128 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<p>static</p>
-</body>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ログイン</title>
+    <style>
+      /* 全体のスタイル */
+      body {
+          font-family: 'Arial', sans-serif;
+          background-color: #f4f7fc;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+
+      /* フォームのコンテナ */
+      .login-container {
+          background-color: white;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          width: 100%;
+          max-width: 450px;
+      }
+
+      h2 {
+          text-align: center;
+          color: #333;
+          margin-bottom: 20px;
+      }
+
+      /* 入力フィールド */
+      .form-group {
+          margin-bottom: 20px;
+      }
+
+      label {
+          font-size: 14px;
+          color: #333;
+          margin-bottom: 5px;
+          display: block;
+      }
+
+      input[type="text"], input[type="password"] {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          box-sizing: border-box;
+      }
+
+      /* ボタン */
+      button {
+          width: 100%;
+          padding: 12px;
+          background-color: #007bff; /* ボタンの背景色を変更 */
+          border: none;
+          color: white;
+          font-size: 16px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+      }
+
+      button:hover {
+          background-color: #0056b3; /* ホバー時の色変更 */
+      }
+
+      /* エラーメッセージ */
+      .error {
+          color: red;
+          font-size: 14px;
+          text-align: center;
+          margin-bottom: 20px;
+      }
+
+      /* リンク */
+      p {
+          text-align: center;
+      }
+
+      a {
+          color: #007bff; /* リンク色を変更 */
+          text-decoration: none;
+          font-weight: bold;
+      }
+
+      a:hover {
+          text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>ログイン</h2>
+
+      <!-- エラーメッセージ（存在する場合） -->
+      <div class="error">
+        <!-- ${error} でエラーメッセージを表示することを想定しています -->
+        <p th:text="${error}"></p>
+      </div>
+
+      <form action="/authenticate" method="post">
+        <div class="form-group">
+          <label for="MailAddress">メールアドレス</label>
+          <input type="text" id="MailAddress" name="MailAddress" required />
+        </div>
+
+        <div class="form-group">
+          <label for="Password">パスワード</label>
+          <input type="password" id="Password" name="Password" required />
+        </div>
+
+        <button type="submit">ログイン</button>
+      </form>
+
+      <p>
+        アカウントをお持ちでない場合は、<a href="/signup">新規登録</a
+        >してください。
+      </p>
+    </div>
+  </body>
 </html>
