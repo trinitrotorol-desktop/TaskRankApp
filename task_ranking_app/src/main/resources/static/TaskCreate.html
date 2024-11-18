@@ -29,7 +29,7 @@
             display: block;
             margin-bottom: 10px;
         }
-        input[type="text"], input[type="datetime-local"], select {
+        input[type="text"], input[type="date"], input[type="time"], select {
             width: 80%;
             padding: 10px;
             margin-bottom: 20px;
@@ -63,15 +63,18 @@
 </head>
 <body>
     <h1>タスクを作成</h1>
-    <form action="/create-task" method="POST">
-        <label for="taskContent">タスクの内容</label>
-        <input type="text" id="taskContent" name="taskContent" placeholder="タスクの内容を入力してください">
+    <form action="/task/create" method="POST">
+        <label for="content">タスクの内容</label>
+        <input type="text" id="content" name="content" placeholder="タスクの内容を入力してください">
 
-        <label for="dueDate">期限日</label>
-        <input type="datetime-local" id="dueDate" name="dueDate">
+        <label for="deadlineDate">期限日(日付)</label>
+        <input type="date" id="deadlineDate" name="deadlineDate" required>
 
-        <label for="priority">優先度</label>
-        <select id="priority" name="priority">
+        <label for="deadlineTime">期限日(時間)</label>
+        <input type="time" id="deadlineTime" name="deadlineTime" required>
+
+        <label for="priorityId">優先度</label>
+        <select id="priorityId" name="priorityId" required>
             <option value="1">低</option>
             <option value="2">中</option>
             <option value="3">高</option>

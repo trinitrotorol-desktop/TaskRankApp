@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SignupController {
 	@GetMapping("/signup")
 	private String signup() {
-		return "/Signup.html";
+		return "redirect:/Signup.html";
 	}
 
 	@PostMapping("/register")
@@ -28,7 +28,7 @@ public class SignupController {
 
 		// パスワードと再入力パスワードの一致を確認
 		if (!password.equals(rePassword)) {
-			return "/Signup.html"; // 一致しない場合はエラーメッセージ付きで登録ページに戻る
+			return "redirect:/Signup.html"; // 一致しない場合はエラーメッセージ付きで登録ページに戻る
 		}
 
 		// パスワードが一致する場合のみデータベースに挿入

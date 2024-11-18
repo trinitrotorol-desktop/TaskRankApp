@@ -90,28 +90,35 @@
 <body>
     <h1>タスクを評価</h1>
     <p>以下のタスクを1~10ptsの10段階で評価してください</p>
-    <form action="/submit-evaluation" method="POST">
-        <label for="taskContent">タスク内容</label>
-        <div class="task-content" id="taskContent">ランダムタスク名</div> 
+    <div th:if="${task != null}">
+    	<form action="/submit-evaluation" method="POST">
+			<input type="hidden" name="taskId" th:value="${task.taskId}" />
+		
+        	<label for="taskContent">タスク内容</label>
+        	<div class="task-content" id="taskContent" th:text="${task.content}">ランダムタスク名</div>
+        
+        	<div class="points-container">
+            	<label for="evaluationPoints">評価</label>
+            	<select id="evaluationPoints" name="evaluationPoints" class="points-input" required>
+                	<option value="1">1</option>
+                	<option value="2">2</option>
+                	<option value="3">3</option>
+                	<option value="4">4</option>
+                	<option value="5">5</option>
+                	<option value="6">6</option>
+                	<option value="7">7</option>
+                	<option value="8">8</option>
+                	<option value="9">9</option>
+                	<option value="10">10</option>
+            	</select>
+            	<span>pts</span>
+        	</div>
 
-        <div class="points-container">
-            <label for="evaluationPoints">評価</label>
-            <select id="evaluationPoints" name="evaluationPoints" class="points-input" required>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <span>pts</span>
-        </div>
-
-        <button type="submit">評価を登録する</button>
-    </form>
+        	<button type="submit">評価を登録する</button>
+    	</form>
+    </div>
+    <div th:if="${task == null}">
+        	<p>表示できるタスクがありません。</p>
+    	</div>
 </body>
 </html>
